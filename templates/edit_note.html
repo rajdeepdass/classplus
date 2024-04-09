@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClassPlus - Edit Note</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> <!-- Include CSS file for styling -->
+</head>
+<body>
+    <div class="container">
+        <h2>Edit Note</h2>
+        <form action="/edit_note/{{ note[0] }}" method="POST">
+            <input type="text" name="title" placeholder="Title" value="{{ note[2] }}" required><br>
+            <textarea name="content" placeholder="Enter your note..." required>{{ note[3] }}</textarea><br>
+            <button type="submit">Save Changes</button>
+        </form>
+    </div>
+</body>
+</html>

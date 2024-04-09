@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClassPlus - Notes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> <!-- Include CSS file for styling -->
+</head>
+<body>
+    <div class="container">
+        <h2>Notes</h2>
+        <form action="/notes" method="POST">
+            <input type="text" name="title" placeholder="Title" required><br>
+            <textarea name="content" placeholder="Enter your note..." required></textarea><br>
+            <button type="submit">Save Note</button>
+        </form>
+        <hr>
+        <h3>Your Notes</h3>
+        <ul>
+            {% for note in user_notes %}
+                <li class="note-container">
+                    <div class="note">
+                        <h4>{{ note[2] }}</h4>
+                        <p>{{ note[3] }}</p>
+                        <p><small>{{ note[4] }}</small></p>
+                    </div>
+                    <div class="note-actions">
+                        <a href="{{ url_for('edit_note', note_id=note[0]) }}" class="button">Edit</a> <!-- Edit button -->
+                        <form action="{{ url_for('delete_note', note_id=note[0]) }}" method="POST" style="display: inline;">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+        <button id="logout">Logout</button> <!-- Button for logging out -->
+        <button id="deleteUser">Delete My Account</button> <!-- Button for deleting user account -->
+    </div>
+
+    <script src="{{ url_for('static', filename='notes.js') }}"></script> <!-- Include JavaScript file -->
+</body>
+</html>

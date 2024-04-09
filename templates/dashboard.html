@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome to your Dashboard</h1>
+        
+    </header>
+    <div class="container">
+        <h2>User Information</h2>
+        <p>Username: {{ user[1] }}</p>
+        <p>Is Teacher: {% if user[3] == 1 %}Yes{% else %}No{% endif %}</p>
+        
+    </div>
+
+    <script src="{{ url_for('static', filename='delete_user.js') }}"></script>
+</body>
+</html>
